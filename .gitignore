@@ -91,4 +91,6 @@ ENV/
 .idea/*
 
 # Folder with experimental tests
-exp/*
+server/data/
+
+
