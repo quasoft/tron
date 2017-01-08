@@ -1,5 +1,7 @@
 # TRON (ToRainOrNot) weather widget
 
+*Under development*
+
 ## Vision statement
 
 TRON is a widget that provides unsolicited advise on clothing and/or taking umbrella, based on weather forecast.
