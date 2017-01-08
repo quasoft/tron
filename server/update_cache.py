@@ -11,11 +11,11 @@ Should be executed daily by cron job at any time after 00:01.
 import os
 import datetime
 import json
-from server import config
-from server.providers.base import BaseWeatherProvider
+import config
+from providers.base import BaseWeatherProvider
 # Importing all weather providers that should be used,
 # to give them a chance to register their classes
-from server.providers.sinoptik import SinoptikProvider
+from providers.sinoptik import SinoptikProvider
 
 
 for location in config.locations_to_cache:
