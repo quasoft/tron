@@ -4,11 +4,11 @@ mobile_user_agent = "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build
 desktop_user_agent = "Mozilla/5.0 (Windows NT x.y; rv:10.0) Gecko/20100101 Firefox/10.0"
 """User agent to present our app as desktop web browser."""
 
-cache_dir = 'data/'
+cache_dir = "data/"
 """path to directory where cached weather data should be stored."""
 
 locations_to_cache = [
-    "Велико Търново",
-    "София",
+    {"location": "Велико Търново", "provider": "sinoptik"},
+    {"location": "София", "provider": "sinoptik"},
 ]
-"""List of locations to cache data for. The names in this list should match the names used in sinoptik list above."""
+"""List of locations to cache data for. The names in this list should match the names used in provider."""
