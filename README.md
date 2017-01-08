@@ -1,5 +1,4 @@
-# tron
-TRON (ToRainOrNot) weather widget
+# TRON (ToRainOrNot) weather widget
 
 ## Vision statement
 
@@ -20,10 +19,10 @@ TRON is a widget that provides unsolicited advise on clothing and/or taking umbr
 ## TODO:
 
 ### Server:
-- [V] Write server app that provides weather data in json
-- [V] Write tests for weather providers:
-    * [V] location scrapping;
-    * [V] downloading weather data.
+- [X] Write server app that provides weather data in json
+- [X] Write tests for weather providers:
+    * [X] location scrapping;
+    * [X] downloading weather data.
 - [ ] Add darksky.io provider
 - [ ] Add setup.py script for server app
 
