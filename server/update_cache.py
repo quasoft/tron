@@ -9,18 +9,20 @@ consumed by mobile and web client.
 Should be executed daily by cron job at any time after 00:01.
 """
 import os
-
-import requests
-from lxml import html
 import datetime
-from collections import OrderedDict
 import json
-import config
-import sinoptik
+from server import config
+from server.providers.base import BaseWeatherProvider
+# Importing all weather providers that should be used,
+# to give them a chance to register their classes
+from server.providers.sinoptik import SinoptikProvider
 
 
-for location_name in config.locations_to_cache:
+for location in config.locations_to_cache:
     """Cache data for each location in a separate file"""
+
+    location_name = location["location"]
+    provider_id = location["provider"]
 
     now = datetime.datetime.now()
 
@@ -42,25 +44,14 @@ for location_name in config.locations_to_cache:
         print('Data for %s on %s already exists' % (location_name, now.strftime('%d.%m.%Y')))
         continue
 
-    # Get the location ID
-    location_id = sinoptik.get_location_id_by_name(location_name)
+    # Find provider by ID or location name
+    if provider_id:
+        provider = BaseWeatherProvider.find_provider(provider_id=provider_id)
+    else:
+        provider = BaseWeatherProvider.find_provider(location_name=location_name)
 
-    # Retrieve HTML of hourly web page for that location
-    url = sinoptik.hourly_url % location_id
-    headers = {'User-Agent': config.mobile_user_agent}
-    page = requests.get(url, headers=headers).text
-    doc = html.fromstring(page)
-
-    # Parse HTML and extract the weather data we need
-    temp = doc.xpath('.//span[contains(@class, \'max-temp\')]/text()')
-    rain_probability = doc.xpath('.//p[starts-with(text(),"Вероятност за валежи:")]/b/text()')
-    rain_intensity = doc.xpath('.//p[starts-with(text(),"Количество валежи:")]/b/text()')
-
-    # Group data by hour
-    hour = int(now.strftime("%H"))
-    hours = [str((hour + i) % 24) + ':00' for i in range(24)]
-    rain = zip(temp, rain_probability, rain_intensity)
-    data = OrderedDict(zip(hours, rain))
+    # Download data for next 24 hours
+    data = provider.download_data(location_name=location_name)
 
     # Write data as json file
     with open(filename, 'w+') as f:
