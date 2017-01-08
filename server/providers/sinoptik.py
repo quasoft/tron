@@ -1,13 +1,12 @@
-#!/usr/bin/env python3
+import datetime
 import time
 from collections import OrderedDict
-
 import requests
 from lxml import html
-import datetime
-from server import config
-from server.providers.base import BaseWeatherProvider
-from server import utils
+
+from .base import BaseWeatherProvider
+from . import utils
+import config
 
 
 class SinoptikProvider(BaseWeatherProvider):

@@ -2,8 +2,8 @@ import unittest
 import logging
 import sys
 
-from server.providers.base import BaseWeatherProvider
-from server.providers.sinoptik import SinoptikProvider
+from providers.base import BaseWeatherProvider
+from providers.sinoptik import SinoptikProvider
 
 
 class TestSinoptikProvider(unittest.TestCase):

@@ -1,7 +1,7 @@
 import unittest
 import logging
 import sys
-from server import utils
+from providers import utils
 
 
 class TestUtils(unittest.TestCase):

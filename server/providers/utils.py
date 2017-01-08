@@ -1,6 +1,6 @@
 import requests
 from lxml import html
-from server import config
+import config
 
 
 def get_html(url):

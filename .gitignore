@@ -93,4 +93,4 @@ ENV/
 # Folder with experimental tests
 server/data/
 
-
+passenger_wsgi.py

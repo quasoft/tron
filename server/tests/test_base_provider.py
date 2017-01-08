@@ -2,7 +2,7 @@ import unittest
 import logging
 import sys
 
-from server.providers.base import BaseWeatherProvider
+from providers.base import BaseWeatherProvider
 
 
 class TestBaseProvider(unittest.TestCase):

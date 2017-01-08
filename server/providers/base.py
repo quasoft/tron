@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 class ProviderMetaClass(type):
     """Metaclass that registers all provider classes in a common
        list and create a singleton global object for each provider
