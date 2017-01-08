@@ -31,7 +31,7 @@ for location in config.locations_to_cache:
         config.cache_dir,
         location_name,
     )
-    os.makedirs(dir, 0o744, True)
+    os.makedirs(dir, 0o755, True)
 
     # Use current date as filename, to prevent using stale data
     filename = os.path.join(
