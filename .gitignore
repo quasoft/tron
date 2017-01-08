@@ -79,6 +79,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
+.venv/
 venv/
 ENV/
 
@@ -92,5 +93,6 @@ ENV/
 
 # Folder with experimental tests
 server/data/
+public/
 
 passenger_wsgi.py
